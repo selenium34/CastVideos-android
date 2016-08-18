@@ -31,11 +31,13 @@ android {
     lintOptions.abortOnError false
 
     sourceSets.main {
-        manifest.srcFile 'AndroidManifest.xml'
-        java.srcDirs = ['src']
-        res.srcDirs = ['res']
+        manifest.srcFile 'src/main/AndroidManifest.xml'
+        java.srcDirs = ['src/main/java']
+        res.srcDirs = ['src/main/res']
     }
 }
+
+def robolectricVersion = "3.1.2"
 
 dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
@@ -43,4 +45,8 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'com.google.android.gms:play-services-cast-framework:9.4.0'
     compile 'com.googlecode.android-query:android-query:0.25.9'
+    testCompile "org.robolectric:shadows-multidex:${robolectricVersion}"
+    testCompile "org.robolectric:shadows-support-v4:${robolectricVersion}"
+    testCompile "org.robolectric:robolectric:${robolectricVersion}"
+    testCompile 'junit:junit:4.12'
 }
